@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -40,13 +40,13 @@ namespace FourCarvings
 
         public CanvasGroup dialogGroup;
 
-        public bool present;
+        public static bool present;
 
        
         private void Awake()
         {
-            ImageDic["¤pºëÆF"] = sprites[0];
-            ImageDic["¦uÅ@ªÌ"] = sprites[1];
+            ImageDic["å°ç²¾éˆ"] = sprites[0];
+            ImageDic["å®ˆè­·è€…"] = sprites[1];
             StartCoroutine(CanvasFade());
         }
 
@@ -59,8 +59,8 @@ namespace FourCarvings
             spreiteRight.gameObject.SetActive(false);
             spriteLeft.gameObject.SetActive(false);
             //OnClickNext();
-            //UpdataText("¤pºëÆF", "¦uÅ@ªÌ");
-            //UpadataImage("¤pºëÆF", false);
+            //UpdataText("å°ç²¾éˆ", "å®ˆè­·è€…");
+            //UpadataImage("å°ç²¾éˆ", false);
         }
 
         private void Update()
@@ -80,13 +80,13 @@ namespace FourCarvings
             {
                 spreiteRight.gameObject.SetActive(true);
                 spriteLeft.gameObject.SetActive(true);
-                if (_position == "¥ª")
+                if (_position == "å·¦")
                 {
                     spriteLeft.sprite = ImageDic[_name];
                     
 
                 }
-                else if (_position == "¥k")
+                else if (_position == "å³")
                 {
                     spreiteRight.sprite = ImageDic[_name];
 
@@ -101,7 +101,7 @@ namespace FourCarvings
         public void ReadText(TextAsset _textAsset)
         {
             dialogRows = _textAsset.text.Split('\n');
-            Debug.Log("Åª¨ú¦¨¥\");
+            Debug.Log("è®€å–æˆåŠŸ");
         }
 
         public void ShowDialogue()
@@ -127,7 +127,7 @@ namespace FourCarvings
                 }
                 else if(cells[0]=="END"&& int.Parse(cells[1]) == dialogIndex)
                 {
-                    Debug.Log("¼@±¡µ²§ô");
+                    Debug.Log("åŠ‡æƒ…çµæŸ");
                     StartCoroutine(CanvasFade(false));
                     present = false;
                     OnSpace = false;
@@ -143,7 +143,7 @@ namespace FourCarvings
             
             if (Input.GetKeyDown(dialogKey)&&OnSpace==true)
             {
-                Debug.Log("«ö¤UªÅ¥ÕÁä");
+                Debug.Log("æŒ‰ä¸‹ç©ºç™½éµ");
                 ShowDialogue();
             }
         }

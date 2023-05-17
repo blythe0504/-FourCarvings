@@ -14,6 +14,7 @@ namespace FourCarvings
 
         private void Start()
         {
+            
             offset = target.position - this.transform.position;
         }
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 namespace FourCarvings
 {
@@ -9,6 +10,8 @@ namespace FourCarvings
     public class InventoryManager : MonoBehaviour
     {
         static InventoryManager instance;
+
+        public Item item;
 
         public Inventory playerBag;
 
@@ -18,12 +21,42 @@ namespace FourCarvings
 
         public TextMeshProUGUI itemInformation;
 
+        public Image UI_image;
+
+        public TextMeshProUGUI item_Name;
+
         private void Awake()
         {
             if (instance != null)
                 Destroy(this);
             instance = this;
         }
+
+        private void Start()
+        {
+           
+        }
+
+        public void OnEnable()
+        {
+            RefeshItem();
+            instance.itemInformation.text = "";
+        }
+        public static void UpdataItemInfo(string itemDescription)
+        {
+            instance.itemInformation.text = itemDescription;
+        }
+        
+        public static void UpdataUI_Image(Sprite _itemImage)
+        {
+            instance.UI_image.sprite = _itemImage;
+        }
+
+        public static void Updata_ItemName(string _itemName)
+        {
+            instance.item_Name.text = _itemName;
+        }
+        
 
         public static void CreatNewItem(Item _item)
         {
@@ -37,8 +70,10 @@ namespace FourCarvings
 
             newItem.slotNum.text = _item.itemHeld.ToString();
 
+            
+
         }
-        /*
+        
         public static void RefeshItem()
         {
             for (int i = 0; i < instance.slotGrid.transform.childCount; i++)
@@ -48,9 +83,12 @@ namespace FourCarvings
                 Destroy(instance.slotGrid.transform.GetChild(i).gameObject);
             }
 
-            for()
+            for (int i = 0; i < instance.playerBag.itemList.Count; i++)
+            {
+                CreatNewItem(instance.playerBag.itemList[i]);
+            }
         }
-        */
+        
     }
   
 }

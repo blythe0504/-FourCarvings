@@ -12,7 +12,8 @@ namespace FourCarvings
         private void OnMouseDown()
         {
             AddNewItem();
-            InventoryManager.CreatNewItem(thisItem);
+            
+            Destroy(gameObject);
         }
 
         public void AddNewItem()
@@ -20,12 +21,14 @@ namespace FourCarvings
             if(!playerInventory.itemList.Contains(thisItem))
             {
                 playerInventory.itemList.Add(thisItem);
-                Destroy(gameObject);
+                //InventoryManager.CreatNewItem(thisItem);
+
             }
             else
             {
                 thisItem.itemHeld += 1;
             }
+            InventoryManager.RefeshItem();
         }
     }
 }

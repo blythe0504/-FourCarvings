@@ -19,7 +19,7 @@ namespace FourCarvings
 
         private void Start()
         {
-            this.transform.position = new Vector2(-17, 1);
+            //this.transform.position = new Vector2(-17, 1);
         }
 
         private void Update()

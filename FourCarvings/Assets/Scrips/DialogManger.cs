@@ -10,18 +10,23 @@ namespace FourCarvings
 {
     public class DialogManger : MonoBehaviour
     {
+        static DialogManger instance;
+
+        /// <summary>
+        /// 遊戲對話文本
+        /// </summary>
         public TextAsset dialogDataFile;
 
-        public SpriteRenderer spriteLeft;
+        //public SpriteRenderer spriteLeft;
 
-        public SpriteRenderer spreiteRight;
-
+        //public SpriteRenderer spreiteRight;
+        //不變
         public TextMeshProUGUI nameText;
-
+        //不變
         public TextMeshProUGUI dialogText;
-
+        //不變
         public List<Sprite> sprites = new List<Sprite>();
-
+        //不變
         Dictionary<string, Sprite> ImageDic = new Dictionary<string, Sprite>();
 
         public int dialogIndex;
@@ -42,7 +47,11 @@ namespace FourCarvings
 
         public static bool present;
 
-       
+        public Image ch_image_Left;
+
+
+        public Image ch_image_Right;
+
         private void Awake()
         {
             ImageDic["小精靈"] = sprites[0];
@@ -56,8 +65,8 @@ namespace FourCarvings
             ShowDialogue();
 
             OnSpace = true;
-            spreiteRight.gameObject.SetActive(false);
-            spriteLeft.gameObject.SetActive(false);
+            //spreiteRight.gameObject.SetActive(false);
+            //spriteLeft.gameObject.SetActive(false);
             //OnClickNext();
             //UpdataText("小精靈", "守護者");
             //UpadataImage("小精靈", false);
@@ -78,22 +87,36 @@ namespace FourCarvings
         {
             if (present == true)
             {
-                spreiteRight.gameObject.SetActive(true);
-                spriteLeft.gameObject.SetActive(true);
+                //spreiteRight.gameObject.SetActive(true);
+                //spriteLeft.gameObject.SetActive(true);
                 if (_position == "左")
                 {
-                    spriteLeft.sprite = ImageDic[_name];
-                    
+                   // spriteLeft.sprite = ImageDic[_name];
 
+                    ch_image_Left.sprite = ImageDic[_name];
+
+                    ch_image_Right.color = new Color32(94, 94, 94, 255);
+
+                    ch_image_Left.color = new Color32(255, 255, 255, 255);
                 }
                 else if (_position == "右")
                 {
-                    spreiteRight.sprite = ImageDic[_name];
+                    //spreiteRight.sprite = ImageDic[_name];
+
+                    ch_image_Right.sprite = ImageDic[_name];
+
+                    ch_image_Left.color = new Color32(94, 94, 94, 255);
+
+                    ch_image_Right.color = new Color32(255, 255, 255, 255);
 
                 }
                 else if (_position == null)
                 {
+                    ch_image_Left.color = new Color32(94, 94, 94, 255);
+                    ch_image_Right.color = new Color32(94, 94, 94, 255);
 
+                    //ch_image_Left.gameObject.SetActive(false);
+                    //ch_image_Right.gameObject.SetActive(false);
                 }
             }
         }
@@ -131,8 +154,8 @@ namespace FourCarvings
                     StartCoroutine(CanvasFade(false));
                     present = false;
                     OnSpace = false;
-                    spreiteRight.gameObject.SetActive(false);
-                    spriteLeft.gameObject.SetActive(false);
+                    //spreiteRight.gameObject.SetActive(false);
+                    //spriteLeft.gameObject.SetActive(false);
                 }
             }
         }
@@ -180,7 +203,7 @@ namespace FourCarvings
         {
             float increase = _fade ? +0.1f : -0.1f;
             present = _fade;
-            print(present);
+            //print(present);
             for (int i = 0; i < 10; i++)
             {
                 dialogGroup.alpha += increase;
@@ -188,6 +211,8 @@ namespace FourCarvings
 
             }
         }
+
+       
         
     }
 

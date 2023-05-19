@@ -14,5 +14,26 @@ namespace FourCarvings
         public Image slotImage;
 
         public TextMeshProUGUI slotNum;
+
+        public Button useButton;
+
+        
+
+        public void ItemOnClick()
+        {
+            InventoryManager.UpdataItemInfo(sloyItem.itemInfo);
+
+            InventoryManager.UpdataUI_Image(sloyItem.itemImage) ;
+
+            InventoryManager.Updata_ItemName(sloyItem.itemName);
+
+            useButton.gameObject.SetActive(true);
+            
+        }
+
+        public void UseOnClick()
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

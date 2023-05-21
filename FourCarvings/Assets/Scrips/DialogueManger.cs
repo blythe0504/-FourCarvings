@@ -6,6 +6,7 @@ using System.Net.Http.Headers;
 using Unity.VisualScripting;
 using UnityEngine.UI;
 using System;
+using System.Text.RegularExpressions;
 
 namespace FourCarvings
 {
@@ -65,9 +66,13 @@ namespace FourCarvings
 
         public Image ch_image_Right;
 
-        public PlayerMovement _playerMovement;
+        //public PlayerMovement _playerMovement;
 
         public BoxCollider2D detectionPoint;
+
+        public static bool speed=false;
+
+        
 
         private void Awake()
         {
@@ -79,7 +84,7 @@ namespace FourCarvings
         private void Start()
         {
             
-            _playerMovement = GameObject.Find("守護者").GetComponent<PlayerMovement>();
+            //_playerMovement = GameObject.Find("守護者").GetComponent<PlayerMovement>();
             //ReadText(dialogDataFile);
             //ShowDialogue();
 
@@ -224,7 +229,9 @@ namespace FourCarvings
                 GameObject button = Instantiate(optionButton, buttonGroup);
 
                 button.GetComponentInChildren<TextMeshProUGUI>().text = cells[4];
-                button.GetComponent<Button>().onClick.AddListener(delegate { OnOptionClick(int.Parse(cells[5])); });
+                button.GetComponent<Button>().onClick.AddListener(delegate { OnOptionClick(int.Parse(cells[5]));
+                    if (cells[6] != "") { cells[7]=Regex.Replace(cells[7],@"[\r\n]","");
+                        OptionEffect(cells[6], cells[7]); } });
                 OnSpace = false;
 
                 GenerateOption(_index + 1);
@@ -267,6 +274,20 @@ namespace FourCarvings
             else
             {
                 PlayerMovement._switch = true;
+            }
+        }
+
+        public void OptionEffect(string _effect, string _target)
+        {
+           
+            if(_effect=="消失")
+            {
+                if(_target=="小精靈")
+                {
+                    GameObject.Find("小精靈").gameObject.SetActive(false);
+                    speed = true;
+                    Debug.Log("傳送守護者加速度");
+                }
             }
         }
 

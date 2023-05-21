@@ -32,6 +32,13 @@ namespace FourCarvings
             if (_switch == false)
             {
                 moveSpeed = 5.0f;
+                if (DialogueManger.speed == true)
+                {
+                    moveSpeed = 7.0f;
+                    Debug.Log("守護者加速度成功");
+
+                }
+
                 movement.x = Input.GetAxisRaw("Horizontal");
                 movement.y = Input.GetAxisRaw("Vertical");
                 rb.isKinematic = false;
@@ -49,6 +56,8 @@ namespace FourCarvings
             }
 
             OpenPlayerBag();
+
+            //Speed();
         }
 
         private void FixedUpdate()
@@ -65,5 +74,17 @@ namespace FourCarvings
                 playerBag.SetActive(isOpen);
             }
         }
+        /*
+        public void Speed()
+        {
+            if (DialogueManger.speed == true)
+            {
+                moveSpeed++;
+                moveSpeed++;
+                Debug.Log("守護者加速度成功");
+               
+            }
+        }
+        */
     }
 }

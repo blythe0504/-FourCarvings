@@ -25,6 +25,8 @@ namespace FourCarvings
 
         public TextMeshProUGUI item_Name;
 
+        
+
         private void Awake()
         {
             if (instance != null)
@@ -49,6 +51,7 @@ namespace FourCarvings
         
         public static void UpdataUI_Image(Sprite _itemImage)
         {
+            instance.UI_image.gameObject.SetActive(true);
             instance.UI_image.sprite = _itemImage;
         }
 
@@ -88,7 +91,10 @@ namespace FourCarvings
                 CreatNewItem(instance.playerBag.itemList[i]);
             }
         }
-        
+
+       
+
+
     }
   
 }

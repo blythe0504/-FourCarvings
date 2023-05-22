@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -15,41 +15,41 @@ namespace FourCarvings
         static DialogueManger instance;
 
         /// <summary>
-        /// ¹CÀ¸¹ï¸Ü¤å¥»
+        /// éŠæˆ²å°è©±æ–‡æœ¬
         /// </summary>
         public TextAsset dialogDataFile;
         /// <summary>
-        /// UI_¨¤¦â¦W¦r
+        /// UI_è§’è‰²åå­—
         /// </summary>
         public TextMeshProUGUI nameText;
         /// <summary>
-        /// UI_¹ï¸Ü¤º®e
+        /// UI_å°è©±å…§å®¹
         /// </summary>
         public TextMeshProUGUI dialogText;
         /// <summary>
-        /// ¨¤¦â¹Ï¤ù¦Cªí
+        /// è§’è‰²åœ–ç‰‡åˆ—è¡¨
         /// </summary>
         public List<Sprite> sprites = new List<Sprite>();
         /// <summary>
-        /// ¨¤¦â¦W¦r¹ïÀ³¦r¨å
+        /// è§’è‰²åå­—å°æ‡‰å­—å…¸
         /// </summary>
         Dictionary<string, Sprite> ImageDic = new Dictionary<string, Sprite>();
         /// <summary>
-        /// ·í«e¹ï¸Ü¯Á¤Ş­È
+        /// ç•¶å‰å°è©±ç´¢å¼•å€¼
         /// </summary>
         public int dialogIndex;
         /// <summary>
-        /// ¹ï¸Ü¤å¥»_¥H¦æ¤À³Î
+        /// å°è©±æ–‡æœ¬_ä»¥è¡Œåˆ†å‰²
         /// </summary>
         public string[] dialogRows;
 
         //public Button nextButton;
         /// <summary>
-        /// ¿ï¶µ«ö¶s¹w¸mª«
+        /// é¸é …æŒ‰éˆ•é ç½®ç‰©
         /// </summary>
         public GameObject optionButton;
         /// <summary>
-        /// ¿ï¶µ«ö¶s¤÷¸`ÂI
+        /// é¸é …æŒ‰éˆ•çˆ¶ç¯€é»
         /// </summary>
         public Transform buttonGroup;
 
@@ -76,15 +76,15 @@ namespace FourCarvings
 
         private void Awake()
         {
-            ImageDic["¤pºëÆF"] = sprites[0];
-            ImageDic["¦uÅ@ªÌ"] = sprites[1];
+            ImageDic["å°ç²¾éˆ"] = sprites[0];
+            ImageDic["å®ˆè­·è€…"] = sprites[1];
             
         }
 
         private void Start()
         {
             
-            //_playerMovement = GameObject.Find("¦uÅ@ªÌ").GetComponent<PlayerMovement>();
+            //_playerMovement = GameObject.Find("å®ˆè­·è€…").GetComponent<PlayerMovement>();
             //ReadText(dialogDataFile);
             //ShowDialogue();
 
@@ -92,8 +92,8 @@ namespace FourCarvings
             //spreiteRight.gameObject.SetActive(false);
             //spriteLeft.gameObject.SetActive(false);
             //OnClickNext();
-            //UpdataText("¤pºëÆF", "¦uÅ@ªÌ");
-            //UpadataImage("¤pºëÆF", false);
+            //UpdataText("å°ç²¾éˆ", "å®ˆè­·è€…");
+            //UpadataImage("å°ç²¾éˆ", false);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -101,7 +101,7 @@ namespace FourCarvings
             if (collision.gameObject.CompareTag("Player"))
             {
                 StartCoroutine(CanvasFade());
-                Debug.Log("°»´ú¦¨¥\");
+                Debug.Log("åµæ¸¬æˆåŠŸ");
                 ReadText(dialogDataFile);
                 ShowDialogue();
                 present = true;
@@ -132,7 +132,7 @@ namespace FourCarvings
             {
                 //spreiteRight.gameObject.SetActive(true);
                 //spriteLeft.gameObject.SetActive(true);
-                if (_position == "¥ª")
+                if (_position == "å·¦")
                 {
                     // spriteLeft.sprite = ImageDic[_name];
 
@@ -142,7 +142,7 @@ namespace FourCarvings
 
                     ch_image_Left.color = new Color32(255, 255, 255, 255);
                 }
-                else if (_position == "¥k")
+                else if (_position == "å³")
                 {
                     //spreiteRight.sprite = ImageDic[_name];
 
@@ -167,7 +167,7 @@ namespace FourCarvings
         public void ReadText(TextAsset _textAsset)
         {
             dialogRows = _textAsset.text.Split('\n');
-            Debug.Log("Åª¨ú¦¨¥\");
+            Debug.Log("è®€å–æˆåŠŸ");
         }
 
         public void ShowDialogue()
@@ -193,7 +193,7 @@ namespace FourCarvings
                 }
                 else if (cells[0] == "END" && int.Parse(cells[1]) == dialogIndex)
                 {
-                    Debug.Log("¼@±¡µ²§ô");
+                    Debug.Log("åŠ‡æƒ…çµæŸ");
                     StartCoroutine(CanvasFade(false));
                     Debug.Log(dialogGroup.alpha);
                     present = false;
@@ -216,7 +216,7 @@ namespace FourCarvings
 
             if (Input.GetKeyDown(dialogKey) && OnSpace == true)
             {
-                Debug.Log("«ö¤UªÅ¥ÕÁä");
+                Debug.Log("æŒ‰ä¸‹ç©ºç™½éµ");
                 ShowDialogue();
             }
         }
@@ -268,7 +268,7 @@ namespace FourCarvings
         {
             if(present==false)
             {
-                //GameObject.Find("¦uÅ@ªÌ").GetComponent<>
+                //GameObject.Find("å®ˆè­·è€…").GetComponent<>
                  PlayerMovement._switch=false;
             }
             else
@@ -280,13 +280,13 @@ namespace FourCarvings
         public void OptionEffect(string _effect, string _target)
         {
            
-            if(_effect=="®ø¥¢")
+            if(_effect=="æ¶ˆå¤±")
             {
-                if(_target=="¤pºëÆF")
+                if(_target=="å°ç²¾éˆ")
                 {
-                    GameObject.Find("¤pºëÆF").gameObject.SetActive(false);
+                    GameObject.Find("å°ç²¾éˆ").gameObject.SetActive(false);
                     speed = true;
-                    Debug.Log("¶Ç°e¦uÅ@ªÌ¥[³t«×");
+                    Debug.Log("å‚³é€å®ˆè­·è€…åŠ é€Ÿåº¦");
                 }
             }
         }

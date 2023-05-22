@@ -5,7 +5,7 @@ namespace FourCarvings
 
     public class PlayerMovement : MonoBehaviour
     {
-        public float moveSpeed = 5f;
+        public float moveSpeed = 3f;
 
         public Rigidbody2D rb;
 
@@ -17,6 +17,9 @@ namespace FourCarvings
 
         public bool isOpen;
 
+        //private AudioSource audioPlayer;
+
+       // public AudioClip walk;
         public static bool _switch;
 
         //public Rigidbody2D playerGB;
@@ -24,6 +27,7 @@ namespace FourCarvings
         private void Start()
         {
             //this.transform.position = new Vector2(-17, 1);
+           // audioPlayer = GameObject.Find("守護者").GetComponent<AudioSource>();
         }
 
         private void Update()
@@ -31,21 +35,23 @@ namespace FourCarvings
             //Input
             if (_switch == false)
             {
-                moveSpeed = 5.0f;
+                moveSpeed = 3.0f;
                 if (DialogueManger.speed == true)
                 {
-                    moveSpeed = 7.0f;
-                    Debug.Log("守護者加速度成功");
+                    moveSpeed = 5.0f;
+                    //Debug.Log("守護者加速度成功");
 
                 }
 
                 movement.x = Input.GetAxisRaw("Horizontal");
                 movement.y = Input.GetAxisRaw("Vertical");
                 rb.isKinematic = false;
-
+               
                 animator.SetFloat("Horizontal", movement.x);
                 animator.SetFloat("Vertical", movement.y);
                 animator.SetFloat("Speed", movement.sqrMagnitude);
+
+                //audioPlayer.PlayOneShot(walk);
             }
             else
             {
@@ -73,6 +79,11 @@ namespace FourCarvings
                 isOpen = !isOpen;
                 playerBag.SetActive(isOpen);
             }
+        }
+
+        public void StepAudio()
+        {
+            AudiaoManager.PlayFootstepAudio();
         }
         /*
         public void Speed()

@@ -284,4 +284,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sloyItem: {fileID: 0}
   slotImage: {fileID: 8382260238347000049}
+  useButton: {fileID: 0}
   slotNum: {fileID: 2037041279305472032}
+  slotName: 
+  propsTextAsset: {fileID: 4900000, guid: df4be8427ca785848874a3378f9bb3fc, type: 3}
+  propsRows: []
